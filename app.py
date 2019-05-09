@@ -137,6 +137,7 @@ def send_sms_response():
         and ('ssn' not in INBOUND_MESSAGE) \
         and ('visa' not in INBOUND_MESSAGE) \
         and ('credit' not in INBOUND_MESSAGE) \
+        and ('extend' not in INBOUND_MESSAGE) \
         or ('ready' in INBOUND_MESSAGE):
         resp.message(menu_resp['contact_isss'])
         resp.message((menu_resp['processing_time']))
@@ -248,7 +249,17 @@ def send_sms_response():
         logger.info(f'{resp}')
         return str(resp)
     elif ('extension' in INBOUND_MESSAGE) or ('extend' in INBOUND_MESSAGE):
-        resp.message(menu_resp['extension'])
+        resp.message(menu_resp['p_extension_1'])
+        resp.message(menu_resp['p_extension_2'])
+        resp.message(menu_resp['p_extension_3'])
+        logger.info(f'{resp}')
+        return str(resp)
+    elif ('rcl' in INBOUND_MESSAGE) and ('apply' not in INBOUND_MESSAGE) \
+        or ('reduced' in INBOUND_MESSAGE) \
+        or ('reduced course load' in INBOUND_MESSAGE):
+        resp.message(menu_resp['rcl'])
+        resp.message(menu_resp['rcl_link'])
+        resp.message(menu_resp['full_time_reminder'])
         logger.info(f'{resp}')
         return str(resp)
     elif ('leave of absence' in INBOUND_MESSAGE) \

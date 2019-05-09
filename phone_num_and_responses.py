@@ -111,12 +111,13 @@ def sms_responses():
     visa_response = f"For visa related questions, {get_sender_name()}, it " \
         f"is best to contact ISSS directly. \n\nCall: 415-422-2654 " \
         f"\nEmail: isss@usfca.edu"
-    program_extension = f'Hello, {get_sender_name()}! Thank you for asking about ' \
-        f'a program extension. In order to be eligible for a program extension' \
+    program_extension_1 = f'Hello, {get_sender_name()}! Thank you for asking about ' \
+        f'a program extension. '
+    program_extension_2 = f'In order to be eligible for a program extension' \
         f' you will have to have your program advisor complete the ISSS program' \
         f' extension form. ' \
-        f'\nhttps://myusf.usfca.edu/isss/departments-faculty/program-extension-overview' \
-        f'\n\nWe also recommend scheduling an appointment with your ' \
+        f'\nhttps://myusf.usfca.edu/isss/departments-faculty/program-extension-overview'
+    program_extension_3 = f'We also recommend scheduling an appointment with your ' \
         f'ISSS advisor.'
     opt_apply = f'Thanks for asking about this, {get_sender_name()}. Students ' \
         f'can apply for OPT as early as 90 days before their I-20 program end' \
@@ -155,11 +156,15 @@ def sms_responses():
         f'\n*A valid F-1 or J-1 visa \n*A valid I-20 or DS-2019 form with ' \
         f'travel endorsement'
     travel_3 = 'For current students, an I-20 or DS-2019 travel endorsement ' \
-            'is valid for 12 months, or until the expiration of the document, ' \
-            'whichever is first.'
-    full_time = f"Excellent question, {get_sender_name()}! Full-time status at " \
-        f"the undergraduate level is considered 12 or more credits. At the " \
-        f"graduate level, full-time status is considered 6 or more units."
+        'is valid for 12 months, or until the expiration of the document, ' \
+        'whichever is first.'
+    rcl = f'Students may be authorized for part-time study while maintaining ' \
+        f'their F-1 status. For more information on when students can study ' \
+        f'part-time, please click here: '
+    rcl_link = f'\n\nhttps://myusf.usfca.edu/isss/students/f-1/change-program'
+    full_time = f"Excellent question, {get_sender_name()}! Full-time status " \
+        f"is considered 12 or more credits the undergraduate level and 6 or " \
+        f"more units at the graduate level."
 
     return \
         {
@@ -188,6 +193,8 @@ def sms_responses():
             'opt_apply': opt_apply,
             'how_opt_apply': how_apply_opt,
             'register_workshop': register_workshop,
+            'rcl': rcl,
+            'rcl_link': rcl_link,
             'taxes': taxes,
             'travel_1':travel_1,
             'travel_2': travel_2,
@@ -202,7 +209,9 @@ def sms_responses():
             'who_is_advisor': who_is_advisor,
             'major': major_response,
             'renew_session': renew_session_response,
-            'extension': program_extension,
+            'p_extension_1': program_extension_1,
+            'p_extension_2': program_extension_2,
+            'p_extension_3': program_extension_3,
             'full_time_reminder': full_time_reminder
         }
 
