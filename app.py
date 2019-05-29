@@ -195,7 +195,8 @@ def send_sms_response():
         resp.message(menu_resp['opt_travel'])
         logger.info(f'{resp}')
         return str(resp)
-    elif ('travel' in INBOUND_MESSAGE) and ('apply' not in INBOUND_MESSAGE):
+    elif ('travel' in INBOUND_MESSAGE) and ('apply' not in INBOUND_MESSAGE)\
+        and ('request' not in INBOUND_MESSAGE):
         resp.message(menu_resp['travel_1'])
         resp.message(menu_resp['travel_2'])
         resp.message(menu_resp['travel_3'])
