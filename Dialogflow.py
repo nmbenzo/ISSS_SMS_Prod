@@ -15,9 +15,7 @@ def detect_intent_response(text):
     language_code = 'en=US'
     session_id = 'nbenzschawel'
 
-
     session_client = dialogflow.SessionsClient()
-
     session = session_client.session_path(project_id, session_id)
 
     text_input = dialogflow.types.TextInput(
