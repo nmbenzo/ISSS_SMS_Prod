@@ -69,29 +69,16 @@ def find_isss_advisor():
 @app.route('/', methods=['POST'])
 def send_sms_response():
     """
-    Responds to an incoming message with a custom SMS depending on the number of
-    the inbound message, the inbound message value as a string, and the
-    session counter (cookie).
+    Responds to an incoming message with a custom SMS response from the trained
+    intents within DialogFlow
     ::returns sms response as a string
     """
     INBOUND_MESSAGE = request.form.get('Body').lower().strip()
-    logger.info(INBOUND_MESSAGE)
-
-    # Save the new counter value in the session
-    cookie = session['counter'] = set_session_response()
-
-    menu_resp = responses.sms_responses()
-
-    # Use the body of the user's text message to create a new TextBlob object.
-    text_blob = TextBlob(INBOUND_MESSAGE)
 
     resp = MessagingResponse()
+    menu_resp = responses.sms_responses()
+    logger.info(INBOUND_MESSAGE)
 
-    # Get sentiment of the user's statement.
-    # >>> sentiment = text_blob.sentiment
-    # >>> sentiment.polarity
-    # 0.0
-    sentiment = text_blob.sentiment
 
     if ('who' in INBOUND_MESSAGE) and ('advisor' in INBOUND_MESSAGE):
         resp.message(menu_resp['who_is_advisor'])
@@ -118,6 +105,23 @@ def send_sms_response():
             logger.info(f'{resp}')
             return str(resp)
     except:
+        """
+        If the DialogFlow API times out or failures to return a valid response,
+        the code within the except block will run to maintain response 
+        continuity.
+        """
+        # Save the new counter value in the session
+        cookie = session['counter'] = set_session_response()
+
+        # Use the body of the user's text message to create a new TextBlob object.
+        text_blob = TextBlob(INBOUND_MESSAGE)
+
+        # Get sentiment of the user's statement.
+        # >>> sentiment = text_blob.sentiment
+        # >>> sentiment.polarity
+        # 0.0
+        sentiment = text_blob.sentiment
+
         if ('appointment' in INBOUND_MESSAGE) or ('advisor' in INBOUND_MESSAGE):
             resp.message(menu_resp['appt'])
             logger.info(f'{resp}')
