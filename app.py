@@ -79,7 +79,6 @@ def send_sms_response():
     menu_resp = responses.sms_responses()
     logger.info(INBOUND_MESSAGE)
 
-
     if ('who' in INBOUND_MESSAGE) and ('advisor' in INBOUND_MESSAGE):
         resp.message(menu_resp['who_is_advisor'])
         resp.message(menu_resp['major'])
