@@ -9,6 +9,11 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
 
 class DialogFlow():
+    """
+    A class to authenticate and point to a specific Dialogflow Agent. This will
+    allow for multiple agents to be selected based on user response without
+    having to create multple separate functions
+    """
     def __init__(self, project_id, language_code, session_id):
         self.project_id = project_id
         self.language_code = language_code
