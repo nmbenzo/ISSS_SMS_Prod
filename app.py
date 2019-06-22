@@ -1,7 +1,7 @@
 from flask import Flask, request, session
 from twilio.twiml.messaging_response import MessagingResponse
 from auth_token import SECRET_KEY
-from Dialogflow import detect_intent_response
+from Dialogflow import smart_message
 import phone_num_and_responses as responses
 import major_advisor as major_advisor
 from textblob import TextBlob
@@ -99,7 +99,8 @@ def send_sms_response():
             return str(resp)
     try:
         if INBOUND_MESSAGE:
-            dialogflow_response = detect_intent_response(INBOUND_MESSAGE)
+            dialogflow_response = \
+            smart_message.detect_intent_response(INBOUND_MESSAGE)
             resp.message(dialogflow_response)
             logger.info(f'{resp}')
             return str(resp)

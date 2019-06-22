@@ -1,5 +1,6 @@
 import os
 import dialogflow_v2 as dialogflow
+from auth_token import project_id, session_id
 
 
 credentials_path = 'isss-chatbot-dev.json'
@@ -7,26 +8,32 @@ credentials_path = 'isss-chatbot-dev.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
 
-def detect_intent_response(text):
-    """Returns the result of detect intent with texts as inputs.
-    Using the same `session_id` between requests allows continuation
-    of the conversation."""
-    project_id = 'isss-chatbot-dev-iysogc'
-    language_code = 'en=US'
-    session_id = 'nbenzschawel'
+class DialogFlow():
+    def __init__(self, project_id, language_code, session_id):
+        self.project_id = project_id
+        self.language_code = language_code
+        self.session_id = session_id
 
-    session_client = dialogflow.SessionsClient()
-    session = session_client.session_path(project_id, session_id)
+    def detect_intent_response(self, text):
+        """Returns the result of detect intent with texts as inputs.
+        Using the same `session_id` between requests allows continuation
+        of the conversation."""
 
-    text_input = dialogflow.types.TextInput(
-        text=text, language_code=language_code)
+        session_client = dialogflow.SessionsClient()
+        session = session_client.session_path(self.project_id, self.session_id)
 
-    query_input = dialogflow.types.QueryInput(text=text_input)
+        text_input = dialogflow.types.TextInput(
+            text=text, language_code=self.language_code)
 
-    response = session_client.detect_intent(
-        session=session, query_input=query_input)
+        query_input = dialogflow.types.QueryInput(text=text_input)
 
-    return_text = response.query_result.fulfillment_text
+        response = session_client.detect_intent(
+            session=session, query_input=query_input)
 
-    return str(return_text)
+        return_text = response.query_result.fulfillment_text
+
+        return str(return_text)
+
+
+smart_message = DialogFlow(project_id, 'en=US', session_id)
 
