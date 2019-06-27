@@ -33,8 +33,10 @@ def set_session_response():
 
 
 def find_isss_advisor():
-    """find_isss_advisor is a function that checks for a major in a specific
-    advisor list and returns a string of the advisors name
+    """find_isss_advisor is a function that checks for a specific
+    majors in a list of majors and returns a string of the advisor's name if
+    an inbound message for a major and a level of education match a major in
+    the advisor's list
     """
     INBOUND_MESSAGE = request.form.get('Body').lower().strip()
 
@@ -91,7 +93,7 @@ def send_sms_response():
             return str(resp)
     except:
         """
-        If the DialogFlow API times out or failures to return a valid response,
+        If the DialogFlow API times out or fails to return a valid response,
         the code within the except block will run to maintain response 
         continuity.
         """
