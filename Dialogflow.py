@@ -1,9 +1,9 @@
 import os
 import dialogflow_v2 as dialogflow
-from auth_token import project_id, session_id
+from auth_token import project_id_prod, session_id
 
 
-credentials_path = 'isss-chatbot-dev.json'
+credentials_path = 'isss-chatbot-prod.json'
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
@@ -40,5 +40,5 @@ class DialogFlow():
         return str(return_text)
 
 
-smart_message = DialogFlow(project_id, 'en=US', session_id)
+smart_message = DialogFlow(project_id_prod, 'en=US', session_id)
 

@@ -1,7 +1,6 @@
 
 Marcella = [
     'Intl & Development Economics',
-    'Development Economics'
     'Art History Arts Management',
     'Arts Management',
     'Computer Science Bridge',
@@ -9,64 +8,22 @@ Marcella = [
     'Economics',
     'Chemistry',
     'Energy Systems Management',
-    'Energy Systems',
     'Environmental Management',
     'International Studies',
     'Professional Communication',
     'Counseling Psychology',
     'Asia Pacific Graduate Studies',
     'Asia Pacific Studies',
-    'APS',
     'Biotechnology',
-    'Computer Science',
     'Public Affairs',
     'Psychology',
     'Sports Management',
     'Urban and Public Affairs',
+    'Catholic Educational Leadership',
     'Theology & Religious Studies',
     'Computer Science'
 ]
 
-Cynthia = [
-    'Data Science',
-    'IME-Intl and Multicultural Educ.',
-    'International and Multicultural Education',
-    'Nursing',
-    'Business Administration',
-    'MBA',
-    'Nonprofit Administration',
-    'Health Informatics',
-    'Behavorial Health',
-    'Entrepreneurship Innovation',
-    'Financial Analysis',
-    'Analytics',
-    'Education',
-    'Learning and Instruction',
-    'Public Health',
-    'Organization and Leadership',
-    'Catholic Educational Leadership',
-    'Teach English Speakers Other Lang',
-    'Teach English Speakers',
-    'TESOL',
-    'Healthcare Sys.Ldrship(MSN/RN)',
-    'Healthcare'
-]
-
-
-Nina = [
-    'Accounting',
-    'Business Administration',
-    'Entrepreneurship',
-    'Innovation',
-    'BENI',
-    'Management',
-    'International Business',
-    'Business',
-    'Marketing',
-    'Finance',
-    'Hospitality Management',
-    'Undeclared business'
-]
 
 Nathan = [
     'Computer Science',
@@ -108,4 +65,42 @@ Nathan = [
     'Writing'
 ]
 
+
+Cynthia = [
+    'Data Science',
+    'IME-Intl and Multicultural Educ.',
+    'International and Multicultural Education',
+    'Nursing',
+    'Business Administration',
+    'MBA',
+    'Nonprofit Administration',
+    'Health Informatics',
+    'Behavorial Health',
+    'Entrepreneurship Innovation',
+    'Financial Analysis',
+    'Analytics',
+    'Education',
+    'Learning and Instruction',
+    'Public Health',
+    'Organization and Leadership',
+    'Teach English Speakers Other Lang',
+    'Teach English Speakers',
+    'TESOL'
+    'Healthcare Sys.Ldrship(MSN/RN)'
+]
+
+
+Nina = [
+    'Accounting',
+    'Business Administration',
+    'Entrepreneurship,'
+    'Innovation',
+    'Management',
+    'International Business',
+    'Business',
+    'Marketing',
+    'Finance',
+    'Hospitality Management',
+    'Undeclared business'
+]
 
