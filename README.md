@@ -13,3 +13,11 @@ The project has been deployed to AWS Lambda via the Zappa package for Python 3.6
 
 Zappa requires a virtual environment to operate properly, so be sure to be in a env when you setup and deploy. 
 
+---Recent Additions---
+
+***Added Twilio SMS integration
+
+***Added Gmail emailing capabilities
+
+***Added Oracle SQL querying capabilities for ODSP
+
