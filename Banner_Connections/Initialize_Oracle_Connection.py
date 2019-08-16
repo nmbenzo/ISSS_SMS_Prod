@@ -42,18 +42,19 @@ def banner_ODSP_tele(connection, query_name):
     connection.close()
 
 
-def ODSP_query_emails(connection, query_name):
-  """The ODSP_query_phone_number function takes in an connection
-  argument to connect to ODSP. It then accepts a phone number query
+def banner_ODSP_emails(connection, query_name):
+  """The banner_ODSP_tele function takes in an connection
+  argument to connect to ODSP. It then accepts a specific query
   as the second argument and returns the query results"""
   cursor = connection.cursor()
   cursor.execute(query_name)
   try:
     query_result = [email[0] for email in cursor]
-    return query_result
+    cleaned_email = ''.join(email for email in query_result)
+    return cleaned_email
   finally:
     cursor.close()
     connection.close()
 
-# if __name__ == "__main__":
-#   print(banner_ODSP_tele(banner_odsp_handler(), query.run_single_tele_query()))
+#if __name__ == "__main__":
+#   print(banner_ODSP_emails(banner_odsp_handler(), query.run_single_email_query()))
