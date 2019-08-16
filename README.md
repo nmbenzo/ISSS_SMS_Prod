@@ -13,3 +13,13 @@ The project has been deployed to AWS Lambda via the Zappa package for Python 3.6
 
 Zappa requires a virtual environment to operate properly, so be sure to be in a env when you setup and deploy. 
 
+This app also allows the user to email (Google API) or text (Twilio API) students by entering phone / email info directly or by querying the Banner ODSP database for email / phone data via a unique student ID.
+
+---Recent Additions---
+
+***Added Twilio SMS integration
+
+***Added Gmail emailing capabilities
+
+***Added Oracle SQL querying capabilities for ODSP
+
