@@ -3,6 +3,9 @@ from Emails import send_mail
 from Emails.email_content import data_901, data_bad_phone, data_bad_addy, \
 data_sv
 from Emails.email_lists import isss, test_list, redundant_test, my_email
+from Banner_Connections.Initialize_Oracle_Connection import \
+banner_odsp_handler, banner_ODSP_emails
+import Banner_Connections.queries as query
 
 
 e_content_list = {
@@ -78,7 +81,6 @@ def singular_email(get_email_message_content):
               'from get_emessage_conetnt')
 
 
-
 def multiple_emails(get_email_blast_list, get_email_message_content):
     """
     Function takes in input from a user to specify the email
@@ -98,6 +100,64 @@ def multiple_emails(get_email_blast_list, get_email_message_content):
             subject_input = input('Email Subject: ')
             content = input('Please type your message: ')
             for email in get_email_blast_list:
+                message = sendInstance.create_message(my_email,
+                email, subject_input, content)
+                sendInstance.send_message('me', message)
+                print(f'\nEmail sent to {email} in email list!')
+    except:
+        print('You must type a message body if one is not chosen '
+              'from get_emessage_conetnt')
+
+
+def banner_query_singular_email(get_email_message_content):
+    """
+    Function takes in input from a user to specify the receiver and the email
+    subject and then sends a message with a defined body of content
+    """
+    sendInstance = send_mail.SendEmail(handler.service)
+    receiver_input = banner_ODSP_emails(banner_odsp_handler(),
+                                    query.run_single_email_query())
+    try:
+        if get_email_message_content != None:
+            subject_input = input('Email Subject: ')
+            message = sendInstance.create_message(my_email,
+            receiver_input, subject_input, get_email_message_content)
+            sendInstance.send_message('me',message)
+            print(f'\nEmail sent to {receiver_input}!')
+        if get_email_message_content == None:
+            subject_input = input('Email Subject: ')
+            content = input('Please type your message: ')
+            message = sendInstance.create_message(my_email,
+            receiver_input, subject_input, content)
+            sendInstance.send_message('me', message)
+            print(f'\nEmail sent to {receiver_input}!')
+    except:
+        print('You must type a message body if one is not chosen '
+              'from get_emessage_conetnt')
+
+
+def banner_query_blast_email(get_email_message_content):
+    """
+    Function takes takes a list of emails generated from the active_emails
+    banner query, prompts the user for an email subject and then sends a message
+    with a defined body of content to several
+    email addresses by looping through a list of emails.
+    """
+    sendInstance = send_mail.SendEmail(handler.service)
+    get_email_banner_list = banner_ODSP_emails(banner_odsp_handler(),
+                       query.active_emails)
+    try:
+        if get_email_message_content != None:
+            subject_input = input('Email Subject: ')
+            for email in get_email_banner_list:
+                message = sendInstance.create_message(my_email,
+                email, subject_input, get_email_message_content)
+                sendInstance.send_message('me', message)
+                print(f'\nEmail sent to {email} in email list!')
+        if get_email_message_content == None:
+            subject_input = input('Email Subject: ')
+            content = input('Please type your message: ')
+            for email in get_email_banner_list:
                 message = sendInstance.create_message(my_email,
                 email, subject_input, content)
                 sendInstance.send_message('me', message)
