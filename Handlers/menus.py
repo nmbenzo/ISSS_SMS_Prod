@@ -46,7 +46,8 @@ class Menu:
 
     def emails(self):
         """
-        Menu where users can elect to send emails to students
+        Menu where users can elect to send emails to students individually
+        or email blast a group of students.
         """
         user_input = input(menu_options.EMAIL_TO_STUDENT_template).lower()
         while user_input != 'q':
