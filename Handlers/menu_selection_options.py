@@ -12,6 +12,8 @@ EMAIL_TO_STUDENT_template = """
 Choose an email template to send to the student: 
 - 'e' - Email to Singular Student
 - 'm' - Email to Multiple Students
+- 'es' - Send single email message from Banner Query
+- 'eb' - Send blast email message from Banner Query
 """
 
 EMAIL_TO_STUDENT_type = """

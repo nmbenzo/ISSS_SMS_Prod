@@ -45,7 +45,9 @@ class Menu:
             return global_menu
 
     def emails(self):
-        """Menu where users can elect to send emails to students"""
+        """
+        Menu where users can elect to send emails to students
+        """
         user_input = input(menu_options.EMAIL_TO_STUDENT_template).lower()
         while user_input != 'q':
             if user_input == 'e':
@@ -57,6 +59,12 @@ class Menu:
                 func.get_email_blast_list(func.e_group_list),
                 func.get_email_message_content(func.e_content_list))
                 time.sleep(0.5)
-
+            elif user_input == 'es':
+                func.banner_query_singular_email(
+                func.get_message_content(func.content_list))
+            elif user_input == 'eb':
+                func.banner_query_blast_email(
+                func.get_message_content(func.content_list))
+                time.sleep(0.5)
             return global_menu
 
