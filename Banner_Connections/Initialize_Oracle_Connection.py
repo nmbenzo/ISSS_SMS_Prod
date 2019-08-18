@@ -49,12 +49,17 @@ def banner_ODSP_emails(connection, query_name):
   cursor = connection.cursor()
   cursor.execute(query_name)
   try:
-    query_result = [email[0] for email in cursor]
-    cleaned_email = ''.join(email for email in query_result)
-    return cleaned_email
+    if query_name != query.active_emails:
+      query_result = [email[0] for email in cursor]
+      cleaned_email = ''.join(email for email in query_result)
+      return cleaned_email
+    else:
+      query_result = [email[0] for email in cursor]
+      return query_result
   finally:
     cursor.close()
     connection.close()
 
+
 #if __name__ == "__main__":
-#   print(banner_ODSP_emails(banner_odsp_handler(), query.run_single_email_query()))
+#   print(banner_ODSP_emails(banner_odsp_handler(), query.active_emails))
